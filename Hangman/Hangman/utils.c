@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-#include "utils.c"
+#include "functions.h"
 
 int rand_num(int interval) {
 	srand(time(NULL));

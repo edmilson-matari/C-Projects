@@ -1,5 +1,5 @@
 // main - Created on Wed Apr  2 13:03:05 WAT 2025
-#include "funtions.h"
+#include "functions.h"
 
 int game_state(char* hidden_word) {
 	for (int i = 0; i < strlen(hidden_word); i++) {
