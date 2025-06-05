@@ -6,10 +6,10 @@ OBJ = main.o utils.o
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(Obj)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 clean:
-	rm -f main.o utils.o
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

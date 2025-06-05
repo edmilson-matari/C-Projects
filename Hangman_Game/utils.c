@@ -7,33 +7,24 @@ int rand_num(int interval) {
 }
 
 void load_words(Dictionary** words, char* file) {
-	int words_num;
 	int i;
 	FILE* fp;
 	char line[100];
 
-	words_num = 0;
 	i = 0;
 	fp = fopen(file, "r");
 	if (!fp) {
-	printf("faile opening file\n");
+		printf("faile opening file\n");
 		return ;
 	}
-	while (fgets(line, sizeof(line), fp) != NULL) {
-		words_num++;
-	}
-	*words = (Dictionary*)malloc(sizeof(Dictionary) * words_num);
-	if (!(*words)) {
-		printf("Error allocating memory\n");
-		return ;
-	}
-	rewind(fp);
-	while (fgets(line, sizeof(line), fp) != NULL) {
+	*words = (Dictionary*)malloc(sizeof(Dictionary) * 1);
+	while (fgets(line, sizeof(line), fp) != NULL) {	
 		if (sscanf(line, "%d %[^,]s", &(*words)[i].num, (*words)[i].word) == 2) {
 			i++;
 		} else {
 			printf("Skipping bad line format\n");
 		}
+		*words = (Dictionary*)realloc(*words, sizeof(Dictionary) * (i + 1));
 	}
 	fclose(fp);
 }	
@@ -42,7 +33,7 @@ void display_word(char* hidden_word, char* given_word) {
 	int size;
 	
 	size = strlen(given_word);
-	printf("===============\n");
+	printf("\n===============\n");
 	printf("  Hangman Game\n");
 	printf("===============\n\n  ");
 	for (int i = 0; i < size; i++) {

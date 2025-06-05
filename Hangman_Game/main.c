@@ -2,7 +2,9 @@
 #include "functions.h"
 
 int game_state(char* hidden_word) {
-	int w_size = strlen(hidden_word);
+	int w_size;
+
+	w_size = strlen(hidden_word);
 	for (int i = 0; i < w_size; i++) {
 		if (hidden_word[i] == '_') {
 			return 1;
